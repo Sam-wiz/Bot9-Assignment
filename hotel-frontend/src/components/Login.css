@@ -1,0 +1,58 @@
+.log_cont
+{
+  padding: 5%;
+  margin: 5%;
+  margin-top: 5%;
+  margin-left: 25%;
+}
+.login
+{
+  font-size: 250%;
+  margin-bottom: 10%;
+
+}
+.reg
+{
+  font-size: 250%;
+  margin-bottom: 10%;
+  margin-left: 10%;
+}
+.frm
+{
+
+  display: flex;
+  flex-direction: column;
+  max-width: 60%;
+}
+.frm input
+{
+  margin: 2%;
+  margin-right: 0%;
+  margin-left: 20%;
+  background-color: #1a1a1a;
+  padding: 4%;
+  padding-right: 15%;
+  font-size: medium;
+  color: aliceblue;
+  box-shadow: none;
+  box-sizing: border-box;
+  border: 2px solid whitesmoke;
+  border-radius: 10%;
+}
+
+.frm button
+{
+  margin: 2%;
+  padding: 2%;
+  margin-left:75%;
+  max-width: 30%;
+}
+.lin
+{
+  text-decoration: none;
+  color: yellow;
+}
+p
+{
+  margin-left: 40%;
+}

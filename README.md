@@ -1,0 +1,1 @@
+This is a demo of a basic chat bot made with OPENAI API and MERN stack
