@@ -8,7 +8,6 @@ const sequelize = require('./config/database');
 const Conversation = require('./models/Conversation');
 const User = require('./models/User');
 const openaiService = require('./services/openaiService');
-const roomService = require('./services/roomService');
 require('dotenv').config();
 
 const app = express();
@@ -31,7 +30,7 @@ const auth = (req, res, next) => {
   }
 };
 
-app.post('/api/chat', auth, async (req, res) => {
+app.post('/chat', auth, async (req, res) => {
   try {
     console.log('Received chat request:', req.body);
     const { message, userId } = req.body;
@@ -72,7 +71,7 @@ app.post('/api/chat', auth, async (req, res) => {
   }
 });
 
-app.post('/api/auth/register', [
+app.post('/register', [
   body('username').notEmpty().withMessage('Username is required'),
   body('email').isEmail().withMessage('Valid email is required'),
   body('password').isLength({ min: 6 }).withMessage('Password must be at least 6 characters long')
@@ -120,9 +119,7 @@ app.post('/api/auth/register', [
     res.status(500).send('Server error');
   }
 });
-
-
-app.post('/api/auth/login', [
+app.post('/login', [
   body('email').isEmail().withMessage('Email is required'),
   body('password').exists().withMessage('Password is required')
 ], async (req, res) => {
@@ -130,9 +127,7 @@ app.post('/api/auth/login', [
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() });
   }
-
   const { email, password } = req.body;
-
   try {
     const user = await User.findOne({ where: { email } });
     if (!user) {
@@ -170,6 +165,6 @@ sequelize.sync({ force: true }).then(async () => {
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
-  res.status(500).send('Something broke!');
+  res.status(500).send('broke! - fked up');
 });
 
