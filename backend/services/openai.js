@@ -101,14 +101,14 @@ const processMessage = async (messages) => {
             console.log('Received second response from OpenAI API:', JSON.stringify(secondResponse));
 
             if (!secondResponse.choices || secondResponse.choices.length === 0) {
-                throw new Error('No response from OpenAI API in second call');
+                throw new Error('No response');
             }
 
             return secondResponse.choices[0].message.content;
         }
 
         if (!responseMessage.content) {
-            return "I'm terribly sorry, but I'm not quite sure how to help with that. However, I can assist you with booking a room. How can I help you today?";
+            return "I'm terribly sorry, I can't assist you with your response. I can help you to book a room?";
         }
 
         return responseMessage.content;
@@ -117,7 +117,6 @@ const processMessage = async (messages) => {
         if (error.response) {
             console.error('OpenAI API error response:', error.response.data);
         } else if (error.message.includes('No response from OpenAI API')) {
-            // Custom handling for service interruption
             return "The OpenAI service is currently unavailable. Please try again later.";
         }
         throw error;
